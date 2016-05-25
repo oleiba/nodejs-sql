@@ -3,6 +3,11 @@
   "version": "0.0.1",
   "description": "Common SQL building blocks string builder",
   "main": "builder.js",
+  "scripts": {
+    "test": "mocha",
+    "coverage": "istanbul cover _mocha -- -R spec",
+    "coveralls": "cat ./coverage/lcov.info | coveralls"
+  },
   "contributors": [
     {
       "name": "oleiba",
@@ -11,5 +16,6 @@
   ],
   "license": "MIT",
   "dependencies": {
+    "lodash": "^4.13.1"
   }
 }
