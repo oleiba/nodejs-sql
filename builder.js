@@ -61,7 +61,7 @@ module.exports = {
 	    attribute_to_set_clause += '  END'
 	    return attribute_to_set_clause
 	  }).join(',\n') + '\n'
-	  sql_query += 'WHERE ' + to_conditions(conditions)
+	  sql_query += 'WHERE ' + self.to_conditions(conditions)
 	  return sql_query
 	},
 	to_conditions: function (conditions) {
