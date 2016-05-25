@@ -1,0 +1,15 @@
+{
+  "name": "nodejs-sql",
+  "version": "0.0.1",
+  "description": "Common SQL building blocks string builder",
+  "main": "builder.js",
+  "contributors": [
+    {
+      "name": "oleiba",
+      "email": "odedleiba5@gmail.com"
+    }
+  ],
+  "license": "MIT",
+  "dependencies": {
+  }
+}
