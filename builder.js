@@ -55,9 +55,9 @@ module.exports = {
 	  sql_query += 'WHERE ' + to_sql_conditions(conditions)
 	  return sql_query
 	},
-	to_conditions = function (conditions) {
+	to_conditions: function (conditions) {
   	return '(' + conditions.map(to_sql_condition).join(' OR ') + ')'
-	}
+	},
 	to_condition: function (where_obj) {
 	  return '(' + Object.keys(where_obj).map(function (key) {
 	    var value = sql_builder.to_value(where_obj[key])
