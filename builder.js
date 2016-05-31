@@ -1,11 +1,9 @@
 var _ = require('lodash')
-var squel = require('squel')
 
-module.exports = function (QueryBuilderOptions) {
-	_.assign(squel.cls.DefaultQueryBuilderOptions, QueryBuilderOptions)
+module.exports = function (squel) {
+	var squel = squel || require('squel')
 	var builder = new squel.cls.QueryBuilder()
 	return {
-		squel: squel,
 		to_values: function (values) {
 			return builder._formatValueForQueryString(values)
 		},
