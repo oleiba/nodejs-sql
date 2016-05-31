@@ -1,9 +1,13 @@
 /* eslint-env mocha */
 var path = require('path')
-var builder = require(path.join(__dirname, '../builder.js'))
 var assert = require('assert')
 
 describe('Check SQL builder', function () {
+	var options = {
+		autoQuoteFieldNames: true,
+		nameQuoteCharacter: '"'
+	}
+	var builder = require(path.join(__dirname, '../builder.js'))(options)
 	it('to_value number', function (done) {
 		assert.equal(builder.to_value(5), '5')
 		done()
@@ -18,6 +22,14 @@ describe('Check SQL builder', function () {
 	})
 	it('to_columns', function (done) {
 		assert.equal(builder.to_columns(['someColumn', 'otherColumn']), '"someColumn", "otherColumn"')
+		done()
+	})
+	it('to_columns_of_model', function (done) {
+		var model = {
+			getTableName: function () { return 'someTable' },
+			attributes: {someColumn: 'SMALLINT', otherColumn: 'BOOLEAN', toExcludeColumn: 'TEXT'}
+		}
+		assert.equal(builder.to_columns_of_model(model, {exclude: ['toExcludeColumn']}), '"someTable"."someColumn", "someTable"."otherColumn"')
 		done()
 	})
 	it('to_update_string', function (done) {
